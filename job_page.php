@@ -1,9 +1,13 @@
 <?php
 include 'core/init.php';
 include 'includes/overall/header.php';
+send_form ()
+?>
+
+<?php
+
 
 echo "Job Information";
-
 echo "<table border =1 >";
 echo "<td>Username</td>";
 echo "<td>Description</td>";
@@ -11,33 +15,29 @@ echo "<td>Budget</td>";
 echo "<tr>";
 
 
-$id = $_REQUEST['job_id'];
+$job_id = $_REQUEST['job_id'];
+$job_query = mysql_query("SELECT * FROM job where job_id = $job_id") or die(mysql_error());
+while ($row3 = mysql_fetch_array($job_query)) {
 
-$query = mysql_query("SELECT * FROM job where job_id = $id") or die(mysql_error());
-while ($row = mysql_fetch_array($query)) {
 
-
-    echo "<td>" . $row['username'] . "</td>";
-    echo "<td>" . $row['description'] . "</td>";
-    echo "<td>" . $row['budget'] . "</td>";
+    echo "<td>" . $row3['username'] . "</td>";
+    echo "<td>" . $row3['description'] . "</td>";
+    echo "<td>" . $row3['budget'] . "</td>";
 }
 
 echo "</table>";
 ?>
-
-
-
 <br>
-<h1>Application Form</h1>
-<form action="welcome.php" method="post">
- Name:<input type="text" name="name" value="<?php echo $user_data['first_name'] ?>"><br>
-    Id:<input type="text" name="name" value="<?php echo $_REQUEST['job_id']; ?>"><br>
-    E-mail: <input type="text" name="email" value=<?php echo get_job_title(); ?>><br>
-    <textarea cols="40" rows="5" name="myname">
-Now we are inside the area - This is for the cover letter.
-    </textarea>
-    <input type="submit">
+<form method="POST" >
+    To: <input type='text' name='to_user' value=<?php get_job_username(); ?>> <br> 
+ From: <input type='text' name=<?php echo $user_data['username']; ?>> <br> 
+ Title: <input type='text' value ="<?php get_job_title(); ?>"name='from_user'><br>  
+ ID <input type='text' value ="<?php echo $_REQUEST['job_id']; ?>"name='from_user'> <br> 
+ Message:<TEXTAREA NAME="message" COLS=50 ROWS=10 WRAP=SOFT></TEXTAREA><br> 
+<input type="submit" value="submit" name="submit" />
 </form>
-</html>
+
+
+
 
 
