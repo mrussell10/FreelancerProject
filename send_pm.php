@@ -1,6 +1,8 @@
 <?php    
+
 include 'core/init.php';
 include 'includes/overall/header.php';
+
  $message = $_POST['forward2'];
  if (isset($_POST['submit']))
 {
