@@ -54,5 +54,3 @@ function login($username, $password) {
     return (mysql_result(mysql_query("SELECT COUNT('user_id') FROM users WHERE username ='$username' AND password ='$password'"), 0) == 1) ? $user_id : false;
 }
 
-
-?>
