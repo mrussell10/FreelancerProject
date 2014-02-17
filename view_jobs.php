@@ -11,8 +11,9 @@
 <?php
 include 'core/init.php';
 include 'includes/overall/header.php';
+protect_page ();
 
-echo "<table border =1 class=gridtable>";
+echo "<table border =1 class=styletable>";
 echo "<td>Username</td>";
 echo "<td>Description</td>";
 echo "<td>Skills Required</td>";

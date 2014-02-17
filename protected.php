@@ -4,7 +4,7 @@
  ?>
  
 
-      <h1>Sorry you need to be a client</h1>
+      <h1>Sorry you need to be logged in to view this page</h1>
       
 </body>
 </html>

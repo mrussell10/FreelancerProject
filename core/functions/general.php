@@ -2,11 +2,12 @@
 
 function protect_page (){
     
-    if (client_check()===false){
+    if (logged_in()===false){
         
         header('location: protected.php');
         exit();
 }
+
 }
 
 ?>

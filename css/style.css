@@ -1,7 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
 
-	/* Resets */
+/* Resets */
+
 ul {
     padding:0;
     margin:0 0 20px 0;
@@ -38,15 +39,13 @@ h2 {
 }
 .logo {
     font:2em Arial;
-    margin:0 0 10px 0;
-    padding:0;
-    width:200px;
+    width:300px;
     color:#fff;
 }
 /* Containers */
 body {
-    background:lightslategray;
-    font-family:Arial;
+    background:teal;
+   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     font-size:0.8em;
 }
 #container, footer {
@@ -125,7 +124,7 @@ dd {
 }
 
 #more_info * {
- xdisplay: inline-block;
+    xdisplay: inline-block;
 }
 
 #more_info dd, #more_info dt {
@@ -137,28 +136,28 @@ dd {
     display: none;
 }
 #more_info dt {
- float: left; 
- width: 25%;    
+    float: left; 
+    width: 25%;    
 }
-table.gridtable {
-	font-family: verdana,arial,sans-serif;
-	font-size:11px;
-	color:#333333;
-	border-width: 1px;
-	border-color: #666666;
-	border-collapse: collapse;
+
+
+table.styletable{
+    font-family: verdana,arial,sans-serif;
+    
+    font-size: 14px;
 }
-table.gridtable th {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background-color: #dedede;
+table.styletable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
 }
-table.gridtable td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background-color: #ffffff;
+table.styletable th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+    font-size: 14px;
 }

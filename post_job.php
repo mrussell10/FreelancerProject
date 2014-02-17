@@ -31,8 +31,8 @@ echo $row['username'];
           <td><input type="text" name="budget" size="40">
           </td>
         <tr>
-          <td>Type of freelancer</td>
-          <td><input type="text" name="budget" size="40">
+          <td>Job type</td>
+          <td><input type="text" name="job_type" size="40">
           </td>
         </tr>
         <tr>
@@ -49,9 +49,9 @@ echo $row['username'];
 
 //inserting data order
 
-$order = "INSERT INTO job (description,budget,username)
+$order = "INSERT INTO job(description,budget,username,job_type,user_id)
 VALUES
-('".$_POST["description"]."','".$_POST["budget"]."','".$user_data['username']."')";
+('".$_POST["description"]."','".$_POST["budget"]."','".$user_data['username']."','".$_POST['job_type']."','".$uer_data['user_id']."')";
 
 //declare in the order variable
 $result = mysql_query($order);	//order executes

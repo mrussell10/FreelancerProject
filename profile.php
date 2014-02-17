@@ -5,55 +5,59 @@ include 'includes/overall/header.php';
 if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
     $username = $_GET['username'];
     $user_id = user_id_from_username($username);
-    $profile_data = user_data($user_id, 'username', 'first_name', 'last_name', 'email', 'address', 'town', 'county');
+    $profile_data = user_data($user_id, 'username', 'first_name', 'last_name', 'email', 'address', 'town', 'county', 'overview', 'profile_pic');
     ?>
 
-    <h1><?php echo $profile_data ['username']; ?>  </h1>
-    <table class="imagetable">
+
+    <table class="styletable">
+        <th><?php echo $username ?></th>
+        <th>About Me : </th>
         <tr>
-            <td>Name : </tb>
-            <td><?php echo $profile_data ['first_name']; ?></td>
-            <td><?php echo $profile_data ['last_name']; ?></td>
+
+            <td><?php echo '<img src = "', $profile_data['profile_pic'], '" alt="">'; ?>
+
+            <td><?php echo $profile_data ['overview']; ?></td>
         <tr>
-            <td>Email : </td>
+            <th>Name : </th>
+            <td><?php echo $profile_data ['first_name']; ?>
+                <?php echo $profile_data ['last_name']; ?></td>
+        <tr>
+            <th>Email : </th>
             <td><?php echo $profile_data ['email']; ?></td>
         </tr>
         <tr>
-            <td>Address : </td>
+            <th>Address : </th>
             <td><?php echo $profile_data ['address']; ?></td>
         </tr>
         <tr>
-            <td>Town : </td>
+            <th>Town : </th>
             <td><?php echo $profile_data ['town']; ?></td>
         </tr>
         <tr>
-            <td>County : </td>
+            <th>County : </th>
             <td><?php echo $profile_data ['county']; ?></td>
         </tr>
+        <tr></tr>
 
+
+    </tr>
     </table>
     <br>
     <?php
-    
-    
-    
     $query = 'SELECT `skill_name` FROM `user_skills` WHERE user_id=' . $user_data['user_id'];
     $result = mysql_query($query) or die(mysql_error());
-    
-    echo "<table border=1 class=imagetable>"; 
-    echo "<td> Skills: </td>";
-    
+
+    echo "<table border=1 class=gridtable>";
+    echo "<th> Skills: </th>";
+
     while ($row = mysql_fetch_array($result)) {
-        
+
         echo "<tr>";
         echo "<td>" . $row["skill_name"] . "</td>";
         echo "</tr>";
-      
     }
-    
-     echo "</table>";
-    
-    
+
+    echo "</table>";
     ?>
 
     <?php
