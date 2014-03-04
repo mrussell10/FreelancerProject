@@ -50,6 +50,7 @@ body {
 }
 #container, footer {
     background:#fff;
+    height:600px;
     width:920px;
     margin:0 auto;
     padding:20px;

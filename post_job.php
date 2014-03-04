@@ -48,17 +48,19 @@ echo $row['username'];
 <?php
 
 //inserting data order
-
+if(empty($_POST['description'])){
+   echo "Please fill in your description !";
+}else {
 $order = "INSERT INTO job(description,budget,username,job_type,user_id)
 VALUES
-('".$_POST["description"]."','".$_POST["budget"]."','".$user_data['username']."','".$_POST['job_type']."','".$uer_data['user_id']."')";
+('".$_POST["description"]."','".$_POST["budget"]."','".$user_data['username']."','".$_POST['job_type']."','".$user_data['user_id']."')";
+}
 
 //declare in the order variable
 $result = mysql_query($order);	//order executes
 if($result){
 	echo("<br>Job posted successfully");
-} else{
-	echo("<br>sorry an error has occured");
+       
 }
 ?>
 </body>
