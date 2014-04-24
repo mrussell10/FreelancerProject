@@ -7,61 +7,56 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
     $user_id = user_id_from_username($username);
     $profile_data = user_data($user_id, 'username', 'first_name', 'last_name', 'email', 'address', 'town', 'county', 'overview', 'profile_pic', 'slideshow');
     ?>
+    <style>
+        .img-circle
+        {
+            height:140px;
+            width:140px;
+        }
+    </style>
+
     <div class="container">
-        <div class="row">
-
-            <div class="col-xs-11 col-sm-6 col-md-6">
-                <div class="well well-sm">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4">
-                            <?php echo '<img src = "', $profile_data['profile_pic'], '" alt=""  class="img-rounded img-responsive" >'; ?>
-
-
-                        </div>
-
-
-                        <h4>
-                            <?php echo $profile_data ['username']; ?></h4>
-                        <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
-                                </i></cite></small>
-                        <p>
-                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
-                            <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-                            <br />
-                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-                        <!-- Split button -->
-
-                        <i class="glyphicon glyphicon-gift"></i>
-                        <?php echo $profile_data ['overview']; ?>
-
-                    </div>
-
-                </div>
-            </div>
+        <div class="span3 well">
+            <center>
+                <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><?php echo '<img src = "', $profile_data['profile_pic'], '" alt=""  class="img-circle" >'; ?></a>
+                <h3><?php echo $profile_data['username'] ?></h3>
+                <em>"Something here"</em>
+            </center>
         </div>
+
+        <span><strong>Skills: </strong></span>
+        <span class="label label-warning">HTML5/CSS</span>
+        <span class="label label-info">Adobe CS 5.5</span>
+        <span class="label label-info">Microsoft Office</span>
+        <span class="label label-success">Windows XP, Vista, 7</span>
+    </center>
+    <hr>
+    <center>
+        <p class="text-left"><strong>Bio: </strong><br>
+            <?php echo $profile_data['overview'] ?></p>
+        <br>
+    </center>
+    </div>
+    <div class="modal-footer">
+        <center>
+            <button type="button" class="btn btn-default" data-dismiss="modal">View Portfolio</button>
+        </center>
     </div>
     </div>
     </div>
-
-
-
+    </div>
+    </div>
 
     <?php
     $query = 'SELECT `skill_name` FROM `user_skills` WHERE user_id=' . $user_data['user_id'];
     $result = mysql_query($query) or die(mysql_error());
 
-    echo "<table border=1 class=gridtable>";
-    echo "<th> Skills: </th>";
 
     while ($row = mysql_fetch_array($result)) {
 
-        echo "<tr>";
-        echo "<td>" . $row["skill_name"] . "</td>";
-        echo "</tr>";
-    }
 
-    echo "</table>";
+        echo "<span class='label label-warning'>" . $row["skill_name"] . "</span>";
+    }
     ?>
 
     <?php
