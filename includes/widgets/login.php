@@ -1,23 +1,23 @@
+<body>
+    <div class="row">
 
-            <div class="widget">
-               <h2>Log in / Register</h2>
-                <div class="inner">
-                    <form action = "login.php" method = "post">
-					<ul id="login"> 
-					<li>Username :<br>
-					<input type="text" name="username">
-					</li>
-					<li>Password :<br>
-					<input type="password" name="password">
-					</li>
-					<li>
-					<input type="submit" name="log in">
-					</li>
-					<li>
-					<a href = "register.php">Register</a>
-					</li>
-					</ul>
-					</form>
-                </div>
-            </div>
-     
+
+
+
+        <div class="col-md-2" >
+
+            <form action = "login.php" class="form-signin" role="form" method="post">
+                <h3 class="form-signin-heading">Please sign in</h2>
+                    <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+                    <br>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <label class="checkbox">
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    <h5><a href = "register.php">Register</a></h5>
+            </form>
+
+        </div> 
+    </div>
+</body>

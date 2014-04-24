@@ -1,59 +1,45 @@
 
 
-<div class="widget">
-    <h2>Hello,
+<body>
+    <div class="list-group">
+        
+        <p class="text-center">
 
-        <?php
-        echo $user_data['first_name'];
-        $username = $user_data['username'];
+            <?php
+            echo $user_data['first_name'];
+            $username = $user_data['username'];
 //Finds the messages that read is null//
-        $sql = mysql_query("SELECT to_user FROM messages WHERE to_user = '$username' AND read_message=''");
+            $sql = mysql_query("SELECT to_user FROM messages WHERE to_user = '$username' AND read_message=''");
 //Counts the messages//
-        $sql_count = MYSQL_NUMROWS($sql);
+            $sql_count = MYSQL_NUMROWS($sql);
 
+            //Finds the messages that read is null//
+            $sql2 = mysql_query("SELECT * FROM job WHERE username = '$username' AND deleted='0'");
+//Counts the messages//
+            $sql_count_jobs = MYSQL_NUMROWS($sql2);
+            ?>
 
-        ///Checks to see if the user logged in is a freelancer///
-        $result = mysql_query("SELECT * FROM users WHERE `user_type` = 'freelancer' AND `username` ='$username'");
-        if ($result && mysql_num_rows($result) > 0) {
-            echo "<div class=inner>";
-            echo "<ul>";
-            echo "<li>";
-            echo "<a href = view_jobs.php>View Jobs</a>";
-            echo "</li>";
-            echo "</ul>";
-            echo "</div>";
-            ///If they are not a freelancer , the post_job page is made available///       
-        } else {
-            echo "<div class=inner>";
-            echo "<ul>";
-            echo "<li>";
-            echo "<a href = post_job.php>Post Job</a>";
-            echo "</li>";
-            echo "</ul>";
-            echo "</div>";
-        }
-        ?>
+            is logged in 
 
-
-        <div class="inner">
-
-            <ul>
-                <li>
-                    <a href ="<?php echo $user_data['username']; ?>">Profile</a>
-                </li>
-                <li>
-                    <a href = "settings.php">Settings</a>
-                </li>
-                <li>
-                    <a href = "inbox.php">Inbox (<?php echo $sql_count; ?>)</a>
-                </li>
-                <li>
-                    <a href = "logout.php">Log Out</a>
-                </li>
-            </ul>
+    </div>
+    <div class="list-group">
+        <div class="col-md-13">
+            <span class="pull-right">
+                <a href ="<?php echo $user_data['username']; ?>" class="list-group-item active">My Profile</a>
+                <a href="view_jobs.php" class="list-group-item">View Jobs</a>
+                <a href="post_job.php" class="list-group-item">Post a Job</a>
+                <a href="my_jobs.php" class="list-group-item">My Jobs</a>
+                <a href="settings.php" class="list-group-item">Settings</a>
+                <a href="inbox.php" class="list-group-item">Inbox</a>
+                <a href="logout.php" class="list-group-item">Log Out</a>
+            </span>
         </div>
-</div>
+    </div>
 
 
 
 
+
+
+
+</body>

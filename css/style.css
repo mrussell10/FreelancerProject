@@ -1,7 +1,107 @@
 @charset "utf-8";
 /* CSS Document */
+#user_widget{
+    width :300px;
+    height: 300px;
+    padding: 5px;
+}
 
+#form_text{
+    position: relative;
+    margin-left: 40px;
+    
+  
+}
+#personal_settings{
+    border : 3px solid greenyellow ;
+    width: 300px;
+}
+#input_box{
+    display: block;
+    width: 100px;
+    height: 10px;
+    padding: 10px;
+    margin-left: 100px;
+    border: 1px solid #cccccc;
+  
+    font-size: 13px;
+
+    
+}
+#textbox{
+
+    display: block;
+    width: 400px;
+    height: 120px;
+    padding: 20px;
+    margin-left: 20px;
+    border: 1px solid #cccccc;
+    line-height: 130%;
+    font-size: 13px;
+
+}
+#settings{
+
+   
+
+}
+
+#profile_photo{
+    
+}
+#profile_head{
+    font-size: 30px;
+    padding: 25px 20px;
+
+}
+
+#details{
+    display: block;
+    width: 100%;
+    font-size: 15px;
+}
+
+#bio{
+    display: block;
+    width: 90%;
+    background: greenyellow;
+    padding: 25px 20px;
+    font-size: 13px;
+
+}
+#content {
+    display: block;
+    width: 60%;
+    background: #fff;
+    padding: 25px 20px;
+    padding-bottom: 35px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+#userphoto {
+    display: block;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+
+}
+#userphoto img {
+    display: block;
+    padding: 5px;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+img {
+    width:100px;
+}
 /* Resets */
+
 
 ul {
     padding:0;
@@ -45,7 +145,7 @@ h2 {
 /* Containers */
 body {
     background:teal;
-   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     font-size:0.8em;
 }
 #container, footer {
@@ -69,12 +169,14 @@ footer {
 }
 .widget {
     margin-bottom:20px;
+
 }
 .widget h2 {
     margin:0 0 10px 0;
     padding:0 5px;
     font-weight:normal;
     border-bottom:1px solid #ddd;
+
 }
 .widget .inner {
     margin:0 10px;
@@ -144,7 +246,7 @@ dd {
 
 table.styletable{
     font-family: verdana,arial,sans-serif;
-    
+
     font-size: 14px;
 }
 table.styletable td {
