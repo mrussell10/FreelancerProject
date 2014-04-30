@@ -29,8 +29,8 @@
                 <a href="view_jobs.php" class="list-group-item">View Jobs</a>
                 <a href="post_job.php" class="list-group-item">Post a Job</a>
                 <a href="my_jobs.php" class="list-group-item">My Jobs</a>
-                <a href="settings.php" class="list-group-item">Settings</a>
-                <a href="inbox.php" class="list-group-item">Inbox</a>
+                <a href="settings.php" class="list-group-item">Edit Profile</a>
+                <a href="inbox.php" class="list-group-item">View Inbox</a>
                 <a href="logout.php" class="list-group-item">Log Out</a>
             </span>
         </div>

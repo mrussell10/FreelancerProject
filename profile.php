@@ -25,10 +25,19 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
         </div>
 
         <span><strong>Skills: </strong></span>
-        <span class="label label-warning">HTML5/CSS</span>
-        <span class="label label-info">Adobe CS 5.5</span>
-        <span class="label label-info">Microsoft Office</span>
-        <span class="label label-success">Windows XP, Vista, 7</span>
+        <span class="label label-warning"> <?php
+            $query = 'SELECT `skill_name` FROM `user_skills` WHERE user_id=' . $user_data['user_id'];
+            $result = mysql_query($query) or die(mysql_error());
+
+
+            while ($row = mysql_fetch_array($result)) {
+
+
+                echo  $row["skill_name"] ;
+                
+            }
+            ?></span>
+
     </center>
     <hr>
     <center>
@@ -47,17 +56,7 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
     </div>
     </div>
 
-    <?php
-    $query = 'SELECT `skill_name` FROM `user_skills` WHERE user_id=' . $user_data['user_id'];
-    $result = mysql_query($query) or die(mysql_error());
 
-
-    while ($row = mysql_fetch_array($result)) {
-
-
-        echo "<span class='label label-warning'>" . $row["skill_name"] . "</span>";
-    }
-    ?>
 
     <?php
 } else {

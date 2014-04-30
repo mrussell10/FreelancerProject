@@ -7,82 +7,74 @@ protect_page();
 
 <html>
     <head>
-        <link href="css/FooTable-2/css/footable.core.css" rel="stylesheet" type="text/css" />
-        <link href="css/FooTable-2/css/footable.metro.css" rel="stylesheet" type="text/css" />
 
     </head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-    <script src="css/FooTable-2/js/footable.js" type="text/javascript"></script>
-    <script src="css/FooTable-2/js/footable.filter.js" type="text/javascript"></script>
-    <script src="css/FooTable-2/js/footable.sort.js" type="text/javascript"></script>
 
-    <script type="text/javascript">
-        $(function() {
 
-            $('.footable').footable();
 
-        });
-    </script>
-    
+    <style>
+        /* generic table styling */
+        table { border-collapse: collapse; width:100%; }
+        th, td { padding: 5px; }
 
-    <body>
-        <div>
-        search:<input id="filter" type="text" /> e.g. username , job type
-        
-        <p>
 
-        <table data-filter="#filter" class="footable">
+        td { border-bottom: 1px solid #ccc; }
+
+        /* filter-table specific styling */
+        td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+    </style>
+</head>
+<body>
+    <div class="col-md-10">
+
+
+        <table>
             <thead>
                 <tr>
-                    <th data-class="expand">
-                        Posted by 
-                    </th>
-                    <th data-class="expand">
-                        Description
-                    </th>
-
-                    <th data-class="expand" data-hide="phone,tablet">
-                        Skills
-                    </th>
-
-                    <th data-class="expand" data-sort-initial="true">
-                        Budget
-                    </th>
-                    
-                    <th data-class="expand" data-hide="phone,tablet">
-                      Job Application
-                    </th>
-
+                    <th scope="col">Image</th>
+                    <th scope="col">Listed by</th>
+                    <th scope="col">Job Type</th>
+                    <th scope="col">Date Placed</th>
+                    <th scope="col">Budget</th>
 
                 </tr>
             </thead>
             <tbody>
 
-
                 <?php
                 ///Updated query to not show deleted jobs//
                 $query = mysql_query("SELECT * FROM job WHERE deleted ='0'") or die(mysql_error());
-                while ($row2 = mysql_fetch_array($query)) {
-
-                    echo "<td>" . $row2["username"] . "</td>";
-                    echo "<td>" . $row2["description"] . "</td>";
-                    echo "<td>" . $row2["skill_type"] . "</td>";
-                    echo "<td>" . $row2["budget"] . "</td>";
-                    echo "<td>" . '<a href="job_page.php?job_id=' . $row2['job_id'] . '">apply </a>' . "</td>";
+                while ($row = mysql_fetch_array($query)) {
+                    echo "<td>" . "<img src='" . $row['image'] . "' height='60' width='60' />" . "</td>";
+                    echo "<td>" . $row["username"] . "</td>";
+                    echo "<td>" . $row["description"] . "</td>";
+                    echo "<td>" . $row["date"] . "</td>";
+                    echo "<td>" . $row["budget"] . " €" . "</td>";
+                    echo "<td>" . '<a href="job_page.php?job_id=' . $row['job_id'] . '">View More Information </a>' . "</td>";
                     echo "</tr>";
                 }
                 ?>
-
-
             </tbody>
         </table>
 
-    </table>
-    </div>
-
-
-
-
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="css/bootstrap/js/jquery.filtertable.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('table').filterTable();
+            });
+        </script>
 </body>
+</html>
+<!-- Placed at the end of the document so the pages load faster -->
+
+
+
+
+
+
+
+
+
 
 </html>

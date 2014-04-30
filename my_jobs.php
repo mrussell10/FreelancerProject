@@ -7,98 +7,77 @@ protect_page();
 
 <html>
     <head>
-        <link href="css/FooTable-2/css/footable.core.css" rel="stylesheet" type="text/css" />
-        <link href="css/FooTable-2/css/footable.metro.css" rel="stylesheet" type="text/css" />
 
     </head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-    <script src="css/FooTable-2/js/footable.js" type="text/javascript"></script>
-    <script src="css/FooTable-2/js/footable.filter.js" type="text/javascript"></script>
-    <script src="css/FooTable-2/js/footable.sort.js" type="text/javascript"></script>
+    <style>
+        button{
+            color:blue;
+        }
+    </style>
 
-    <script type="text/javascript">
-        $(function() {
-
-            $('.footable').footable();
-
-        });
-    </script>
-
-    <h1> Manage your jobs </h1>
-
-    <body>
-        <div>
-            search:<input id="filter" type="text" /> 
-
-            <p>
-            <form action="" method="post">
-                <table data-filter="#filter" class="footable">
-                    <thead>
-                        <tr>
-                            <th data-class="expand">
-                                Posted by 
-                            </th>
-                            <th data-class="expand">
-                                Description
-                            </th>
-
-                            <th data-class="expand" data-hide="phone,tablet">
-                                Skills
-                            </th>
-
-                            <th data-class="expand" data-sort-initial="true">
-                                Budget
-                            </th>
-
-
-                            <th data-class="expand" >
-                                Manage
-                            </th>
 
 
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
+    <body>
+        <div class="col-md-11">   
+            <div class="widget stacked widget-table action-table">
+
+                <div class="widget-header">
+                    <i class="icon-th-list"></i>
+                    <h3>Manage your listed jobs</h3>
+                </div> <!-- /widget-header -->
+
+                <div class="widget-content">
+
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Budget</th>
+                                <th>Manage</th>
+                                <th class="td-actions"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php
+                            //Display jobs that are currently available
+                            $query = mysql_query("SELECT * FROM job WHERE username ='$username' AND deleted ='0'") or die(mysql_error());
+                            while ($row2 = mysql_fetch_array($query)) {
+
+                                echo "<td>" . $row2["description"] . "</td>";
+                                echo "<td>" . $row2["budget"] . "</td>";
+
+                                $row2["job_id"];
+
+                                //Adds the delete button to the form//
+                                echo "<td>" . '<form method="post"> <button class="btn-xs btn-danger" type="submit" onclick="return confirm(\'are you sure you would like to delete this job? \');"name="del" value="' . $row2["job_id"] . '" />Delete </button> </form>' . "<td>";
+
+                                echo "</tr>";
+
+                                // Deletes the entry from showing on the site//
+                                if (isset($_POST['del'])) {
 
 
-                        <?php
-                        $query = mysql_query("SELECT * FROM job WHERE username ='$username' AND deleted ='0'") or die(mysql_error());
-                        while ($row2 = mysql_fetch_array($query)) {
+                                    $id = $_POST['del'];
 
-                            echo "<td>" . $row2["username"] . "</td>";
-                            echo "<td>" . $row2["description"] . "</td>";
-                            echo "<td>" . $row2["skill_type"] . "</td>";
-                            echo "<td>" . $row2["job_id"] . "</td>";
-
-                            //Adds the delete button to the form//
-                            echo "<td>" . '<form method="post"> <button type="submit" name="del" value="' . $row2["job_id"] . '" />Delete </button> </form>' . "<td>";
-
-                            echo "</tr>";
-
-                            // Deletes the entry from showing on the site//
-                            if (isset($_POST['del'])) {
-
-
-                                $id = $_POST['del'];
-
-                                $query2 = mysql_query("UPDATE job SET deleted='1'
+                                    $query2 = mysql_query("UPDATE job SET deleted='1'
                                 WHERE job_id ='$id'") or die(mysql_error());
+                                }
                             }
-                        }
-                        ?>
+                            ?>
+                        </tbody>
+                    </table>
 
+                </div> <!-- /widget-content -->
 
-                    </tbody>
-                </table>
-            </form>
-        </table>
-    </div>
-
+            </div> <!-- /widget -->
+            <div>
 
 
 
-</body>
+                </body>
 
-</html>
+                </html>

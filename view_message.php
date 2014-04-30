@@ -6,118 +6,99 @@ include 'includes/overall/header.php';
 
 <html>
     <head>
-        <link href="css/FooTable-2/css/footable.core.css" rel="stylesheet" type="text/css" />
-        <link href="css/FooTable-2/css/footable.metro.css" rel="stylesheet" type="text/css" />
+
 
     </head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-    <script src="css/FooTable-2/js/footable.js" type="text/javascript"></script>
+    <style>
+        button {
+            color:black;
+        }
+    </style>
 
-    <script type="text/javascript">
-        $(function() {
-
-            $('.footable').footable();
-
-        });
-    </script>
 
     <body>
+        <div class="col-md-11">   
+            <div class="widget stacked widget-table action-table">
+
+                <div class="widget-header">
+                    <i class="icon-th-list"></i>
+                    <h3>Inbox</h3>
+                </div> <!-- /widget-header -->
+
+                <div class="widget-content">
+
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>From</th>
+                                <th>Title</th>
+                                <th>Message</th>
 
 
-        <table data-filter="#filter" class="footable">
-            <thead>
-                <tr>
-                    <th data-class="expand">
-                        From
-                    </th>
-                    <th data-class="expand">
-                        Title
-                    </th>
 
-                    <th data-class="expand" data-sort-initial="true">
-                        Message
-                    </th>
-                    <th data-class="expand" data-sort-initial="true">
-                        Manage
-                    </th>
+                                <th class="td-actions"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $message_id = $_REQUEST['message_id'];
+
+                            ;
+                            $update_read = mysql_query("UPDATE messages SET read_message = 'yes' WHERE message_id = $message_id") or die(mysql_error());
+
+                            $job_query = mysql_query("SELECT * FROM messages where message_id = $message_id") or die(mysql_error());
+                            while ($row3 = mysql_fetch_array($job_query)) {
 
 
-                </tr>
-            </thead>
-            <tbody>
+                                echo "<td>" . $row3['from_user'] . "</td>";
+                                echo "<td>" . $row3['title'] . "</td>";
+                                echo "<td>" . $row3['message'] . "</td>";
+                                echo"<label for='del'>Male</label>";
+                                $to_user = $row3['from_user'];
+                                $title = $row3['title'];
+                            }
+                            ?>
+                        </tbody>
+                    </table>
 
+                </div> <!-- /widget-content -->
 
-                <?php
-                $message_id = $_REQUEST['message_id'];
+            </div> <!-- /widget -->
+            <div>
 
-                ;
-                $update_read = mysql_query("UPDATE messages SET read_message = 'yes' WHERE message_id = $message_id") or die(mysql_error());
+                <br>
 
-                $job_query = mysql_query("SELECT * FROM messages where message_id = $message_id") or die(mysql_error());
-                while ($row3 = mysql_fetch_array($job_query)) {
+                <form method="POST" action="" >
 
-
-                echo "<td>" . $row3['from_user'] . "</td>";
-                echo "<td>" . $row3['title'] . "</td>";
-                echo "<td>" . $row3['message'] . "</td>";
-                echo"<label for='del'>Male</label>";
-                echo "<td>" . '<form method="post"> <button  type="submit" name="del" value="' . $row3["message_id"] . '" /> Delete </button></form>' . "<td>";
-
-                $to_user = $row3['from_user'];
-                $title = $row3['title'];
-
-                if (isset($_POST['del'])) {
-
-
-                $id = $_POST['del'];
-
-                $query2 = mysql_query("UPDATE messages SET deleted='1'
-                                WHERE message_id ='$id'") or die(mysql_error());
-                }
-                }
-                
-                ?>
-            </tbody>
-        </table>
-        <br>
-        <form method="POST" action="" >
-            <h1>Reply :</h1>
-            <TEXTAREA NAME="pm" COLS=50 ROWS=10 WRAP=SOFT></TEXTAREA><br> 
-<input type="submit" value="submit" name="submit" />
+                    <label class="col-md-6 control-label" for="message">Reply</label>
+                    <textarea class="form-control" NAME="pm" cols="1" rows="4"></TEXTAREA><br> 
+<div class="pull-right">
+<input class="btn btn-primary" onclick="return confirm('are you sure you want to send ?')" type="submit" value="submit" name="submit" />
+</div>
 </form>
 
 
-        <?php
-        $sender = $user_data['username'];
-//Selecting the username from the job database that corresponds with the job id//
-        $username_query = mysql_query("SELECT * FROM job where job_id = $job_id");
-        while ($row = mysql_fetch_array($username_query)) {
-
-            $to_user = $row['username'];
-            $title = $row['description'];
-        }
-
-
-        $from_user = $user_data['username'];
+                <?php
+                $from_user = $user_data['username'];
 
 
 //Declaring the variable for the cover letter//
-        $pm = $_POST['pm'];
+                $pm = $_POST['pm'];
 
 //If the cover letter is empty//
-        if (empty($pm) === true) {
-            echo "Please fill in the message";
-        } else
-            $order = "INSERT INTO messages(from_user,to_user,message,title)
+                if (empty($pm) === true) {
+                    echo "Please fill in the message";
+                } else
+                    $order = "INSERT INTO messages(from_user,to_user,message,title)
 VALUES
 ('" . $from_user . "','" . $to_user . "','" . $pm . "','" . $title . "')";
 
 //declare in the order variable
-        $result = mysql_query($order); //order executes
-        if ($result) {
-            echo("<br>Your message has been sucessfuly sent");
-        }
-        ?>
+                $result = mysql_query($order); //order executes
+                if ($result) {
+                    echo("<br>Your message has been sucessfuly sent");
+                }
+                ?>
 
 
 

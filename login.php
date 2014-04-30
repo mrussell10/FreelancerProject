@@ -13,8 +13,7 @@ if (empty($username) === true || empty($password) === true ){
     $errors[] = 'You need to enter a username and password';
     } else if (user_exists($username) === false) {
       $errors[] = 'We cant find that username';
-     } else if (user_active($username) === false) {
-	 $errors[] = 'you havn\'t activated your account';
+     
 	 } else {
 	 
 	 if(strlen ($password) > 32){
@@ -28,7 +27,7 @@ if (empty($username) === true || empty($password) === true ){
 	$errors[] = 'That username/password combination is incorrect';
 	 }else{
 	 $_SESSION['user_id'] = $login;
-	 header('location: profile.php');
+	header( 'Location: ' . $username );
 	 exit();
 
 	 }
