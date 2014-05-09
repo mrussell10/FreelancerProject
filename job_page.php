@@ -8,7 +8,7 @@ include 'includes/overall/header.php';
     <div class = "col-md-11">
 
         <hgroup class = "mb20">
-            <h1>Job Information</h1>
+            <h3>Job Information</h3>
             <h2 class = "lead"><strong class = "text-danger">Please</strong> apply using the <strong class = "text-danger">cover letter</strong></h2>
         </hgroup>
 
@@ -65,8 +65,8 @@ include 'includes/overall/header.php';
     <div class="container">
 
         <div class="row text-center">
-            <h3>Interested ?</h3>
-            <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Click to apply</a>
+            <h3>Click below to apply </h3>
+            <a href="#" class="btn  btn-primary" data-toggle="modal" data-target="#basicModal">Apply</a>
         </div>
 
 
@@ -75,20 +75,20 @@ include 'includes/overall/header.php';
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+                        <h4 class="modal-title" id="myModalLabel">Application Form</h4>
                     </div>
                     <div class="modal-body">
-                        <h3>Application Form</h3>
+
 
                         <form method="POST" action="" >
-                            <h3>Cover :</h3>
+                            <h3>Cover Letter :</h3>
                             <TEXTAREA NAME="pm" COLS=50 ROWS=10 WRAP=SOFT></TEXTAREA><br> 
-<input type="submit" value="submit" name="submit" />
+<input type="submit" class="btn btn-primary"value="Send" name="submit" />
 </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                  
                 </div>
             </div>
         </div>
@@ -100,7 +100,6 @@ include 'includes/overall/header.php';
 
 
     <?php
-    $sender = $user_data['username'];
 //Selecting the username from the job database that corresponds with the job id//
     $username_query = mysql_query("SELECT * FROM job where job_id = $job_id");
     while ($row = mysql_fetch_array($username_query)) {
@@ -123,6 +122,8 @@ include 'includes/overall/header.php';
         $insert = "INSERT INTO messages(from_user,to_user,message,title)
 VALUES
 ('" . $from_user . "','" . $to_user . "','" . $pm . "','" . $title . "')";
+    $update_bids = "UPDATE job SET bid = bid + 1 WHERE job_id = $job_id";
+    $exc = mysql_query($update_bids); //order executes
 
 //declare in the order variable
     $result = mysql_query($insert); //order executes

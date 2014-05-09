@@ -1,3 +1,5 @@
+
+
 <?php
 include 'core/init.php';
 include 'includes/overall/header.php';
@@ -52,9 +54,9 @@ echo $row['username'];
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="category">Category</label>
+                            <label class="col-md-3 control-label" for="job_type">Category</label>
                             <div class="col-md-9">
-                                <select class="form-control" name="category">
+                                <select class="form-control" name="job_type">
                                     <option>Websites IT & Software</option>
                                     <option>Mobile</option>
                                     <option>Writing</option>

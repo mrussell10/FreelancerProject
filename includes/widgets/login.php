@@ -8,6 +8,7 @@
     <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
 </div>
     </div>
+        
 
       
             <div class="col-md-2 ">
@@ -26,4 +27,5 @@
 
         </div> 
     </div>
+     
 </body>

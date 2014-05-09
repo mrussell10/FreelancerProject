@@ -1,8 +1,9 @@
 <?php
 include 'core/init.php';
 include 'includes/overall/header.php';
+protect_page();
 ?>
-
+<?php ?>
 
 <html>
     <head>
@@ -17,6 +18,7 @@ include 'includes/overall/header.php';
 
 
     <body>
+
         <div class="col-md-11">   
             <div class="widget stacked widget-table action-table">
 
@@ -43,19 +45,28 @@ include 'includes/overall/header.php';
                             <?php
                             $message_id = $_REQUEST['message_id'];
 
-                            ;
+
                             $update_read = mysql_query("UPDATE messages SET read_message = 'yes' WHERE message_id = $message_id") or die(mysql_error());
 
                             $job_query = mysql_query("SELECT * FROM messages where message_id = $message_id") or die(mysql_error());
                             while ($row3 = mysql_fetch_array($job_query)) {
-
-
-                                echo "<td>" . $row3['from_user'] . "</td>";
-                                echo "<td>" . $row3['title'] . "</td>";
-                                echo "<td>" . $row3['message'] . "</td>";
-                                echo"<label for='del'>Male</label>";
+                                
                                 $to_user = $row3['from_user'];
                                 $title = $row3['title'];
+                                $sender = $row3['to_user'];
+
+                                if ($username != $sender) {
+                                    
+                                    echo 'You cannot view this message';
+                                    header( 'Location: protected.php' ) ;
+                                    
+                                } else {
+
+                                    echo "<td>" . $row3['from_user'] . "</td>";
+                                    echo "<td>" . $row3['title'] . "</td>";
+                                    echo "<td>" . $row3['message'] . "</td>";
+                                    echo"<label for='del'>Male</label>";
+                                }
                             }
                             ?>
                         </tbody>
@@ -103,7 +114,7 @@ VALUES
 
 
 
-
+                
 
 </body>
 </html>

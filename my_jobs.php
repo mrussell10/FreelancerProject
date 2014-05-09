@@ -65,6 +65,7 @@ protect_page();
 
                                     $query2 = mysql_query("UPDATE job SET deleted='1'
                                 WHERE job_id ='$id'") or die(mysql_error());
+                                    
                                 }
                             }
                             ?>

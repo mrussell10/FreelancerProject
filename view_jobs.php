@@ -28,15 +28,16 @@ protect_page();
     <div class="col-md-10">
 
 
-        <table>
+        <table id="mytable" class="table table-bordred table-striped">
             <thead>
-                <tr>
-                    <th scope="col">Image</th>
+                <tr class="warning">
+                    <th scope="col" >Image</th>
                     <th scope="col">Listed by</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Job Type</th>
                     <th scope="col">Date Placed</th>
                     <th scope="col">Budget</th>
-
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -45,12 +46,13 @@ protect_page();
                 ///Updated query to not show deleted jobs//
                 $query = mysql_query("SELECT * FROM job WHERE deleted ='0'") or die(mysql_error());
                 while ($row = mysql_fetch_array($query)) {
-                    echo "<td>" . "<img src='" . $row['image'] . "' height='60' width='60' />" . "</td>";
-                    echo "<td>" . $row["username"] . "</td>";
-                    echo "<td>" . $row["description"] . "</td>";
+                    echo "<td >" . "<img src='" . $row['image'] . "' height='60' width='60' />" . "</td>";
+                    echo "<td >" . $row["username"] . "</td>";
+                    echo "<td>"."<b>" . $row["description"] . "</b>"."</td>";
+                    echo "<td>"."<b>" . $row["job_type"] . "</b>"."</td>";
                     echo "<td>" . $row["date"] . "</td>";
                     echo "<td>" . $row["budget"] . " €" . "</td>";
-                    echo "<td>" . '<a href="job_page.php?job_id=' . $row['job_id'] . '">View More Information </a>' . "</td>";
+                    echo "<td>"."<b>" . '<a href="job_page.php?job_id=' . $row['job_id'] . '">Apply </a>' . "</b>"."</td>";
                     echo "</tr>";
                 }
                 ?>

@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php">Home</a></li>
                 <li><a href="view_jobs.php">View Jobs</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact">View Freelancers</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                     <ul class="dropdown-menu">
