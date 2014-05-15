@@ -31,6 +31,6 @@
                 </div>
             </div>
             <div class="row">
-                <p><center><a href="#">Contact Stuff Here</a> <p class="footertext">Copyright 2014</p></center></p>
+                <p><center><a href="#"></a> <p class="footertext"></p></center></p>
             </div>
         </div>

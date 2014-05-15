@@ -6,25 +6,26 @@ include 'core/init.php';?>
 
 if (empty ($_POST) === false){
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = mysql_real_escape_string($_POST['username']);
+$password = mysql_real_escape_string($_POST['password']);
+$user_password=md5($password); 
 
-if (empty($username) === true || empty($password) === true ){
-    $errors[] = 'You need to enter a username and password';
+if (empty($username) === true || empty($user_password) === true ){
+    $errors = 'You need to enter a username and password';
     } else if (user_exists($username) === false) {
-      $errors[] = 'We cant find that username';
+      $errors = 'We cant find that username';
      
 	 } else {
 	 
-	 if(strlen ($password) > 32){
-	      $errors[] = 'password too long';
+	 if(strlen ($user_password) > 32){
+	      $errors = 'password too long';
 	 }
 	 
-	$login = login ($username, $password);
+	$login = login ($username, $user_password);
 	
 	if($login === false) {
 	
-	$errors[] = 'That username/password combination is incorrect';
+	$errors = 'That username/password combination is incorrect';
 	 }else{
 	 $_SESSION['user_id'] = $login;
 	header( 'Location: ' . $username );
@@ -38,4 +39,4 @@ if (empty($username) === true || empty($password) === true ){
 
 include 'includes/overall/header.php'
 ?>
-markup
+

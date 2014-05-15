@@ -1,16 +1,6 @@
-
-
 <?php
 include 'core/init.php';
 include 'includes/overall/header.php';
-
-$id = mysql_real_escape_string($_GET['user_id']);
-$query = 'SELECT `username` FROM `users` WHERE `user_id` = ' . $id . ' LIMIT 1';
-$result = mysql_query($query);
-$row = mysql_fetch_array($result);
-
-// Echo page content
-echo $row['username'];
 ?>
 
 <div class="container">
@@ -28,15 +18,10 @@ echo $row['username'];
                                 <input id="name" name="description" type="text" placeholder="What are you looking for ?" class="form-control">
                             </div>
                         </div>
-                        <!-- Image input-->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"  for="image">Image</label>
-                            <div class="col-md-9">
-                                <input id="image" name="image" type="url" placeholder="Insert url here" class="form-control">
-                            </div>
-                        </div>
+                    
+                     
 
-                        <!-- Email input-->
+                        <!-- Budget input-->
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="budget">Budget</label>
                             <div class="col-md-9">
@@ -91,19 +76,31 @@ echo $row['username'];
 
             <?php
             
-//inserting data order
+            //Declaring variables//
+            $instructions = mysql_real_escape_string($_POST["instructions"]);
+            $image = $user_data['profile_pic'];
+            $description = mysql_real_escape_string($_POST["description"]);
+            $budget = mysql_real_escape_string($_POST["budget"]);
+            $username = mysql_real_escape_string($user_data['username']);
+            $job_type = mysql_real_escape_string($_POST["job_type"]);
+            $user_id = mysql_real_escape_string($user_data['user_id']);
+
+
             if (empty($_POST['description'])) {
                 echo "Please fill in your description !";
             } else {
-                $order = "INSERT INTO job(instructions,image,description,budget,username,job_type,user_id)
-VALUES
-('" . $_POST["instructions"] . "','" . $_POST["image"] . "','" . $_POST["description"] . "','" . $_POST["budget"] . "','" . $user_data['username'] . "','" . $_POST['job_type'] . "','" . $user_data['user_id'] . "')";
+                $sql = "INSERT INTO job(instructions,image,description,budget,username,job_type,user_id)
+                          VALUES
+                          ('" . $instructions . "','" . $image . "','" . $description . "','" . $budget . "','" . $username . "','" . $job_type . "','" . $user_id . "')";
             }
 
-//declare in the order variable
-            $result = mysql_query($order); //order executes
+            //declare in the order variable
+            $result = mysql_query($sql); //sql executes
             if ($result) {
-                echo("<br>Job posted successfully");
+                $updated_rows = mysql_affected_rows();
+                if ($updated_rows > 0) {
+                    echo '<script type="text/javascript">window.location.replace("successful_post.php");</script>';
+                }
             }
             ?>
         </div>

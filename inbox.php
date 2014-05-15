@@ -13,7 +13,7 @@ include 'includes/overall/header.php';
 
 
     <body>
-        <div class="col-md-11">   
+        <div class="col-md-9">   
             <div class="widget stacked widget-table action-table">
 
                 <div class="widget-header">
@@ -80,11 +80,12 @@ include 'includes/overall/header.php';
                                 echo "<tr>";
                                 if (isset($_POST['del'])) {
 
-
                                     $id = $_POST['del'];
 
-                                    $query2 = mysql_query("UPDATE messages SET deleted='1'
-                                WHERE message_id ='$id'") or die(mysql_error());
+
+                                    $sql = mysql_query("UPDATE messages SET deleted='1'
+                                                        WHERE message_id ='$id'") or die(mysql_error());
+                                    echo '<script type="text/javascript">window.location.replace("edit_profile.php");</script>';
                                 }
                             }
                             ?>

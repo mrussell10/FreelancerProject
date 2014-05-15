@@ -1,5 +1,4 @@
 
-
 <body>
     <div class="list-group">
 
@@ -11,26 +10,119 @@
 //Finds the messages that read is null//
             $sql = mysql_query("SELECT to_user FROM messages WHERE to_user = '$username' AND (read_message='' AND deleted='')");
 //Counts the messages//
-            $sql_count = MYSQL_NUMROWS($sql);
-            
+            $new_message = MYSQL_NUMROWS($sql);
             ?>
 
             is logged in 
-  
+
     </div>
-    <div class="list-group">
-        <div class="col-md-13">
-            <span class="pull-right">
-                <a href ="<?php echo $user_data['username']; ?>" class="list-group-item active">My Profile</a>
-                <a href="view_jobs.php" class="list-group-item">View Jobs</a>
-                <a href="post_job.php" class="list-group-item">Post a Job</a>
-                <a href="my_jobs.php" class="list-group-item">My Jobs</a>
-                <a href="settings.php" class="list-group-item">Edit Profile</a>
-                <a href="inbox.php" class="list-group-item">Inbox <?php echo "(".$sql_count.")";?></a>
-                <a href="logout.php" class="list-group-item">Log Out</a>
-            </span>
+ 
+   
+        <div class="col-md-2 pull-right">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-user">
+                            </span>Profile</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-eye-open text-primary"></span><a href='<?php echo $user_data['username']?>'>View Profile</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-pencil text-primary"></span><a href="edit_profile.php">Edit Profile</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-pencil text-info"></span><a href="my_skills.php">Edit Skills</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-pencil text-success"></span><a href="my_portfolio.php">Edit Portfolio</a>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                            </span>Jobs</a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="my_jobs.php">Manage Jobs</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="view_jobs.php">Find a Job</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="post_job.php">Post a Job</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="view_freelancers.php">Find a Freelancer</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-envelope">
+                            </span>Messaging</a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="inbox.php">Inbox </a> <span class="label label-info"><?php echo $new_message ?></span>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                     <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="logout.php">
+                                </span><a href="logout.php">Log Out</a>
+                        </h4>
+                    </div>
+                </div>
+                
         </div>
-    </div>
+   
+
 
 
 

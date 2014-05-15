@@ -3,8 +3,6 @@ include 'core/init.php';
 include 'includes/overall/header.php';
 protect_page();
 ?>
-
-
 <html>
     <head>
 
@@ -13,20 +11,20 @@ protect_page();
 
 
     <style>
-     
+        
     </style>
 </head>
 <body>
     <div class="col-md-10">
-        <table id="mytable" class="table table-striped">
+        <table id="mytable" class="table table-striped table-hover">
             <thead>
                 <tr class="warning">
-                    <th scope="col" >Image</th>
-                    <th scope="col">Listed by</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Job Type</th>
-                    <th scope="col">Date Placed</th>
-                    <th scope="col">Budget</th>
+                    <th scope="col" ></th>
+                    
+                    <th scope="col">Name</th>
+                    <th scope="col">Overview</th>
+                   <th scope="col">Role</th>
+                    <th scope="col">Rate</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -34,15 +32,15 @@ protect_page();
 
                 <?php
                 ///Updated query to not show deleted jobs//
-                $query = mysql_query("SELECT * FROM job WHERE deleted ='0'") or die(mysql_error());
+                $query = mysql_query("SELECT * FROM users") or die(mysql_error());
                 while ($row = mysql_fetch_array($query)) {
-                    echo "<td >" . "<img src='" . $row['image'] . "' height='60' width='60' class='img-thumbnail'/>" . "</td>";
+                    echo "<td >" . "<img src='" . $row['profile_pic'] . "' height='60' width='60' />" . "</td>";
                     echo "<td >" . $row["username"] . "</td>";
-                    echo "<td>". $row["description"] ."</td>";
-                    echo "<td>"."<b>" . $row["job_type"] . "</b>"."</td>";
-                    echo "<td>" . $row["date"] . "</td>";
-                    echo "<td>" . $row["budget"] . " €" . "</td>";
-                    echo "<td>"."<b>" . '<a href="job_page.php?job_id=' . $row['job_id'] . '">Apply </a>' . "</b>"."</td>";
+                    echo "<td>" . $row["overview"] . "</td>";
+                    echo "<td>". "<b>". $row["area"] ."</b>". "</td>";
+                    echo "<td>". "<b>"."$ ". $row["rate"] ." P/hour"."</b>". "</td>";
+                    echo "<td>"  . '<a href="' . $row['username'] . '">View Profile </a>'. "</b>" . "</td>";
+                   
                     echo "</tr>";
                 }
                 ?>

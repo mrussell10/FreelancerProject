@@ -21,7 +21,7 @@ protect_page();
 
 
     <body>
-        <div class="col-md-11">   
+        <div class="col-md-9">   
             <div class="widget stacked widget-table action-table">
 
                 <div class="widget-header">
@@ -65,7 +65,7 @@ protect_page();
 
                                     $query2 = mysql_query("UPDATE job SET deleted='1'
                                 WHERE job_id ='$id'") or die(mysql_error());
-                                    
+                                    echo '<script type="text/javascript">window.location.replace("my_jobs.php");</script>';
                                 }
                             }
                             ?>

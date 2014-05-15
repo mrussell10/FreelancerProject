@@ -2,16 +2,15 @@
     <div class="row">
 
 
+
 <div class="col-md-9">
 <div class="jumbotron">
     <h1>Tech Gigs</h1>
     <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
 </div>
     </div>
-        
 
-      
-            <div class="col-md-2 ">
+        <div class="col-md-2 ">
 
             <form action = "login.php" class="form-signin" role="form" method="post">
                 <h3 class="form-signin-heading">Please sign in</h2>
@@ -27,5 +26,5 @@
 
         </div> 
     </div>
-     
+
 </body>

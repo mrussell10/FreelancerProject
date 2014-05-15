@@ -2,8 +2,6 @@
 include 'core/init.php';
 include 'includes/overall/header.php';
 ?>
-
-
 <html>
     <head>
 
@@ -14,7 +12,7 @@ include 'includes/overall/header.php';
 
     <body>
 
-        <div class="col-md-11">   
+        <div class="col-md-10">   
             <div class="widget stacked widget-table action-table">
                 <div class="col-md-6">
                     <form role="form" class="form-inline" method="post">
@@ -63,6 +61,7 @@ include 'includes/overall/header.php';
 
                                         $query2 = mysql_query("UPDATE user_skills SET removed='1'
                                     WHERE skill_id ='$skill_id'") or die(mysql_error());
+                                        echo '<script type="text/javascript">window.location.replace("my_skills.php");</script>';
                                     }
                                 }
                                 ?>
@@ -83,14 +82,22 @@ include 'includes/overall/header.php';
                         </body>
 
                         <?php
-                        $skill = $_REQUEST['skill'];
+                        $skill = mysql_real_escape_string($_REQUEST['skill']);
 
 
                         if (empty($skill) === true) {
                             
                         } else
                             $sql = "INSERT INTO `user_skills`(`skill_name`, `user_id`) VALUES ('$skill','$u_id')";
-                            $excecute = mysql_query($sql);
+
+                        $result = mysql_query($sql);
+
+                        if ($result) {
+                            $updated_rows = mysql_affected_rows();
+                            if ($updated_rows > 0) {
+                                echo '<script type="text/javascript">window.location.replace("my_skills.php");</script>';
+                            }
+                        }
                         ?>
 
 

@@ -5,7 +5,7 @@ include 'includes/overall/header.php';
 <body>
 
 
-    <div class = "col-md-11">
+    <div class = "col-md-10">
 
         <hgroup class = "mb20">
             <h3>Job Information</h3>
@@ -25,8 +25,6 @@ include 'includes/overall/header.php';
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-2">
                     <ul class = "meta-search">
-                        <li><i class = "glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
-                        <li><i class = "glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
                         <li><i class = "glyphicon glyphicon-tags"></i> <span> <?php
                                 $job_id = $_REQUEST['job_id'];
                                 $job_query = mysql_query("SELECT * FROM job where job_id = $job_id") or die(mysql_error());
@@ -54,21 +52,21 @@ include 'includes/overall/header.php';
                     </p>						
 
                 </div>
-                <span class="clearfix borda"></span>
-            </article>
+
+
 
 
 
 
         </section>
     </div>
-    <div class="container">
-
+    <div class="container ">
+<div class="col-md-3 col-md-offset-4">
         <div class="row text-center">
             <h3>Click below to apply </h3>
             <a href="#" class="btn  btn-primary" data-toggle="modal" data-target="#basicModal">Apply</a>
         </div>
-
+</div>
 
         <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -124,10 +122,12 @@ VALUES
 ('" . $from_user . "','" . $to_user . "','" . $pm . "','" . $title . "')";
     $update_bids = "UPDATE job SET bid = bid + 1 WHERE job_id = $job_id";
     $exc = mysql_query($update_bids); //order executes
-
 //declare in the order variable
     $result = mysql_query($insert); //order executes
     if ($result) {
-        echo("<div class='alert alert-success'><center><h5><b>Success!!</b> Your cover letter has been sent</h5></center></div>");
+        $updated_rows = mysql_affected_rows();
+        if ($updated_rows > 0) {
+            echo '<script type="text/javascript">window.location.replace("successful_application.php");</script>';
+        }
     }
     ?>
