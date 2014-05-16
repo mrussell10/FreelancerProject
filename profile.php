@@ -87,7 +87,8 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
                 $sql = mysql_query("SELECT * FROM `portfolio` WHERE user_id = '$user_id' AND removed =''");
                 while ($row = mysql_fetch_array($sql)) {
                     echo "<table >";
-                    echo "<td><a href ='" . $row['location'] . "'><img src = '" . $row['location'] . "' class='img-thumbnail'></a>";
+                    //Not yet ready to be viewed on profiles//
+                    // "<td><a href ='" . $row['location'] . "'><img src = '" . $row['location'] . "' class='img-thumbnail'></a>";//
                     echo "<td>";
                 }
                 ?>
