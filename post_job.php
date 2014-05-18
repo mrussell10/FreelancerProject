@@ -43,6 +43,9 @@ include 'includes/overall/header.php';
                             <div class="col-md-9">
                                 <select class="form-control" name="job_type">
                                     <option>Websites IT & Software</option>
+                                    <option>Web Design</option>
+                                    <option>Programming</option>
+                                    <option>Design</option>
                                     <option>Mobile</option>
                                     <option>Writing</option>
                                     <option>Data Entry</option>

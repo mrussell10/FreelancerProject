@@ -1,3 +1,4 @@
+
 <body>
     <div class="row">
 
@@ -6,7 +7,7 @@
 <div class="col-md-9">
 <div class="jumbotron">
     <h1>Tech Gigs</h1>
-    <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+    <h4>Browse Freelancers , Search, Interview & Post Jobs Free.</h4>
 </div>
     </div>
 
@@ -28,3 +29,6 @@
     </div>
 
 </body>
+<?php
+include 'includes/overall/footer.php';
+?>

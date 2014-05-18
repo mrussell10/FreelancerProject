@@ -112,6 +112,7 @@ include 'includes/overall/header.php';
             if (in_array($file_extn, $allowed) === true) {
 
                 change_profile_image($session_user_id, $file_temp, $file_extn);
+                echo '<script type="text/javascript">window.location.replace("edit_profile.php");</script>';
             } else {
                 echo "Incorrect file type";
             }
