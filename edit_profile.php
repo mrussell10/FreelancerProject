@@ -20,6 +20,12 @@ include 'includes/overall/header.php';
         </div>
     </div>
     <form role="form" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="role">Role</label>
+            <input type="text" name="role" value="<?php echo $user_data['role'] ?>" class="form-control" id="exampleInputEmail1" placeholder="Enter your role - e.g Freelancer or Employer">
+        </div>
+
         <div class="form-group">
             <label for="email">Email address</label>
             <input type="email" name="email" value="<?php echo $user_data['email'] ?>" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
@@ -27,17 +33,17 @@ include 'includes/overall/header.php';
 
         <div class="form-group">
             <label for="website">Website Url</label>
-            <input type="url" name="website" value="<?php echo $user_data['website'] ?>" class="form-control" id="exampleInputPassword1" placeholder="">
+            <input type="url" name="website" value="<?php echo $user_data['website'] ?>" class="form-control" id="exampleInputPassword1" placeholder="Enter your website url">
         </div>
         <div class="form-group">
             <label for="location">Location</label>
-            <input type="text" name="location" value="<?php echo $user_data['county'] ?>" class="form-control" id="location" >
+            <input type="text" name="location" value="<?php echo $user_data['county'] ?>" class="form-control" id="location" placeholder="Enter the county you live in" >
         </div>
 
         <div class="input-group group-lg">
 
             <span class="input-group-addon">€</span>
-            <input type="text" name="rate" value="<?php echo $user_data['rate'] ?>" class="form-control">
+            <input type="text" name="rate" value="<?php echo $user_data['rate'] ?>" class="form-control" placeholder="Enter the rate you charge per hour">
             <span class="input-group-addon">.00</span>
         </div>
 
@@ -45,11 +51,11 @@ include 'includes/overall/header.php';
 
         <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="text" name="phone" value="<?php echo $user_data['phone'] ?>" class="form-control" id="rate" >
+            <input type="text" name="phone" value="<?php echo $user_data['phone'] ?>" class="form-control" id="rate"  placeholder="Enter your phone number">
         </div>
         <div class="form-group">
             <label for="overview">Overview</label>
-            <textarea name="overview" rows="5" class="form-control" id="overview" ><?php echo $user_data['overview'] ?></textarea>
+            <textarea name="overview" rows="5" class="form-control" id="overview" placeholder="Enter a brief overview of yourself"><?php echo $user_data['overview'] ?></textarea>
         </div>
 
         <div class="form-group">
@@ -67,6 +73,7 @@ include 'includes/overall/header.php';
     <?php
     $name = $user_data['username'];
     //Requesting fields from form//
+    $role = mysql_real_escape_string($_REQUEST['role']);
     $email = mysql_real_escape_string($_REQUEST['email']);
     $website = mysql_real_escape_string($_REQUEST['website']);
     $location = mysql_real_escape_string($_REQUEST['location']);
@@ -78,7 +85,7 @@ include 'includes/overall/header.php';
     if (isset($_POST['submit'])) {
 
         //Insert the requested fields into the database//
-        $sql = "UPDATE `users` SET `email`= '$email',`county`='$location',`phone`='$phone',`rate`='$rate',`website`='$website',`overview`= '$overview' WHERE username = '$username'";
+        $sql = "UPDATE `users` SET `role`= '$role',`email`= '$email',`county`='$location',`phone`='$phone',`rate`='$rate',`website`='$website',`overview`= '$overview' WHERE username = '$username'";
         $result = mysql_query($sql);
 
         if ($result) {

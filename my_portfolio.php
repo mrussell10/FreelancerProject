@@ -12,15 +12,16 @@ include 'includes/overall/header.php';
     </style>
 
     <body>
-
+<div class="col-md-2">
         <form role="form" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="exampleInputFile">File input</label>
+                <label for="exampleInputFile">Add your image below</label>
                 <input name="image" type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
+                <p class="help-block">Add your image and click add to upload</p>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn-sm btn-success">Add</button>
         </form>
+</div>
     </body>
 
     <div class="col-md-8">   
@@ -101,6 +102,7 @@ include 'includes/overall/header.php';
                 $u_id = $user_data['user_id'];
                 $username = $user_data['username'];
                 $save = mysql_query("INSERT INTO portfolio (location, user_id) VALUES ('$location','$u_id')");
+                echo '<script type="text/javascript">window.location.replace("my_portfolio.php");</script>';
 
                 exit();
             }

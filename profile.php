@@ -9,7 +9,7 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
     if (user_exists($username) === true) {
 
         $user_id = user_id_from_username($username);
-        $profile_data = user_data($user_id, 'username', 'first_name', 'last_name', 'email', 'county', 'overview', 'profile_pic', 'phone', 'website', 'user_id', 'rate', 'area');
+        $profile_data = user_data($user_id, 'username', 'first_name', 'last_name', 'email', 'county', 'overview', 'profile_pic', 'phone', 'website', 'user_id', 'rate', 'role');
     } else {
         include 'redirect.php';
     }
@@ -38,7 +38,7 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
 
                 </div>
                 <div class="col-md-4">
-                    <h4><b><?php echo $profile_data['area'] ?></b></h4></span>
+                    <h4><b><?php echo $profile_data['role'] ?></b></h4></span>
                 </div>
             </div>
         </div>

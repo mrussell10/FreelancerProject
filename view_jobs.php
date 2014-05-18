@@ -44,7 +44,7 @@ include 'includes/overall/header.php';
                     echo "<td>". $row["description"] ."</td>";
                     echo "<td>"."<b>" . $row["job_type"] . "</b>"."</td>";
                     echo "<td>" . $row["date"] . "</td>";
-                    echo "<td>" . $row["budget"] . " €" . "</td>";
+                    echo "<td>"."€ " . $row["budget"]."</td>";
                     echo "<td>"."<b>" . '<a href="job_page.php?job_id=' . $row['job_id'] . '">Apply </a>' . "</b>"."</td>";
                     echo "</tr>";
                 }

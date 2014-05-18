@@ -10,7 +10,7 @@ protect_page();
 
         <hgroup class = "mb20">
             <h3>Job Information</h3>
-            <h2 class = "lead"><strong class = "text-danger">Please</strong> apply using the <strong class = "text-danger">cover letter</strong></h2>
+            <h2 class = "lead"><strong class = "text-danger">Please</strong> apply using the <strong class = "text-danger">apply button</strong></h2>
         </hgroup>
 
         <section class = "col-xs-12 col-sm-6 col-md-12">
@@ -80,7 +80,8 @@ protect_page();
 
 
                         <form method="POST" action="" >
-                            <h3>Cover Letter :</h3>
+                            <h5>You can apply for the job by entering your cover letter below</h5>
+                            <h6>Cover Letter :</h6>
                             <TEXTAREA NAME="pm" COLS=50 ROWS=10 WRAP=SOFT></TEXTAREA><br> 
 <input type="submit" class="btn btn-primary"value="Send" name="submit" />
 </form>
