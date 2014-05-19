@@ -44,7 +44,7 @@ protect_page();
 
                             <?php
                             //Display jobs that are currently available
-                            $query = mysql_query("SELECT * FROM job WHERE username ='$username' AND deleted ='0'") or die(mysql_error());
+                            $query = mysql_query("SELECT * FROM job WHERE username ='$username' AND deleted =''") or die(mysql_error());
                             while ($row2 = mysql_fetch_array($query)) {
 
                                 echo "<td>" . $row2["description"] . "</td>";

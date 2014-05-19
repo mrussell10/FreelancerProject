@@ -37,7 +37,7 @@ include 'includes/overall/header.php';
 
                 <?php
                 ///Updated query to not show deleted jobs//
-                $query = mysql_query("SELECT * FROM job WHERE deleted ='0'") or die(mysql_error());
+                $query = mysql_query("SELECT * FROM job WHERE deleted =''") or die(mysql_error());
                 while ($row = mysql_fetch_array($query)) {
                     echo "<td >" . "<img src='" . $row['image'] . "' height='60' width='60' class='img-thumbnail'/>" . "</td>";
                     echo "<td >" . $row["username"] . "</td>";
